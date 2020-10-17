@@ -52,7 +52,7 @@ Dir.glob("**/*.svg").each do |filename|
   puts "WARNING: #{filename} is missing color #0fa" if !svg.match("#0fa")
   svg = svg.gsub('"#0fa"', '{color}')
   target_folder = '../poisonicon/' + name
-  target_file = target_folder + '/' + type + '.js'
+  target_file = target_folder + '/' + type + '.njs'
   Dir.mkdir(target_folder) unless File.exists?(target_folder)
   File.write(target_file, svg)
 end
@@ -72,4 +72,4 @@ end
 index = index_template.gsub('{{IMPORTS}}', imports.join("\n"))
 index = index.gsub('{{PICKS}}', picks.join("\n  "))
 
-File.write('../poisonicon/index.js', index)
+File.write('../poisonicon/index.njs', index)
